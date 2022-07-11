@@ -1,6 +1,6 @@
 .div-box{
     width: 100%;
-    margin-top: 10px;
+    margin: 10px 0px;
     border: 1px solid rgba(0, 0, 0, 0.2);
     border-radius: 15px;
     display: inline-block;
@@ -89,4 +89,51 @@
 
 .div-progress-item progress{
     width: 250px;
+}
+
+.div-project-item, .div-education-item{
+    width: 100%;
+    overflow: auto;
+    float: left;
+}
+
+.div-project-item img{
+    border: 1px solid black;
+    margin: 15px 10px 15px 20px;
+    padding: 5px;
+    width: 75px;
+    float: left;
+}
+
+.project-name, .education-title{
+    margin-top: 15px;
+    display: block;
+    float: left;
+    font-size: 20px;
+    font-weight: 630;
+    text-decoration: none;
+}
+
+.project-name:hover{
+    text-decoration: underline;
+}
+
+.project-info, .education-date{
+    font-size: 15px;
+    color:rgba(0, 0, 0, 0.7);
+    display: block;
+}
+
+.div-projects h4, p{
+    color:rgba(0, 0, 0, 0.6);
+    font-style: italic;
+    padding: 10px 0px 5px 40px;
+}
+
+.div-education-item img{
+    border: 1px solid black;
+    margin: 15px 10px 15px 20px;
+    padding: 5px;
+    width: 75px;
+    float: left;
 }
