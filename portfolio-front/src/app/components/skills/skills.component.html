@@ -4,25 +4,14 @@
       <div class="div-title">
           <h1>Skills</h1> <br/>
       </div>
-      <div class="div-progress">
-          <div class="div-progress-item">
-              <label>Logic & algorithmic thinking:</label> <br/>
-              <progress max="100" value="80"></progress>
-          </div>
-          <div class="div-progress-item">
-              <label>Teamwork:</label> <br/>
-              <progress max="100" value="30"></progress>
-          </div>
-          <div class="div-progress-item">
-              <label>Good practices:</label> <br/>
-              <progress max="100" value="65"></progress>
-          </div>
-          <div class="div-progress-item">
-              <label>Creativity:</label> <br/>
-              <progress max="100" value="40"></progress>
-          </div>
 
+      <div *ngFor="let skill of skillsData" class="div-progress">
+          <div class="div-progress-item">
+              <label>{{ skill.skill }}</label> <br/>
+              <progress max="100" [value]="skill.value"></progress>
+          </div>
       </div>
+
   </div>
 
 </div>

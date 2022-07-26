@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { DataService } from './../../services/data.service';
+import { HeaderData } from './../../models/data.model';
 
 @Component({
   selector: 'app-header',
@@ -9,10 +11,15 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 export class HeaderComponent implements OnInit {
 
   faEdit = faEdit;
+  headerData!: HeaderData;
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
+    this.dataService.getData()
+    .subscribe(data => {
+      this.headerData = data['header-data'];
+    })
   }
 
 }
