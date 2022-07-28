@@ -6,12 +6,14 @@
         <label for="email">E-mail</label>
         <br/>
         <input type="email" required [(ngModel)]="email" #myEmail="ngModel" email name="email" id="email">
+        <span [class.active]="myEmail.invalid && email"> *Invalid e-mail </span>
       </div>
       <br/><br/>
       <div>
         <label for="password">Password</label>
         <br/>
         <input type="password" required minlength="8" [(ngModel)]="password" #myPassword="ngModel" name="password" id="password">
+        <span [class.active]="myPassword.invalid && password"> *Password is too short </span>
       </div>
       <br/><br/>
       <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Done</button>

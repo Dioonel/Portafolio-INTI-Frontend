@@ -27,6 +27,21 @@ form{
   font-size: 17px;
 }
 
+.form div span{
+  display: none;
+}
+
+.form div .active{
+  display: block;
+  float: right;
+  color: red;
+  font-size: 15px;
+  font-weight: 500;
+  background-color: rgba(255, 0, 0, 0.2);
+  border-radius: 5px;
+  padding: 1px;
+}
+
 .form div input{
   background-color: rgba(153, 153, 153, 0.2);
   border: none;
