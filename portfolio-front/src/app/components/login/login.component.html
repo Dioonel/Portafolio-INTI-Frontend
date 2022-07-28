@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="form">
+    <h1>Login</h1> <br/>
+    <form (ngSubmit)="submitForm()" #myForm="ngForm">
+      <div>
+        <label for="email">E-mail</label>
+        <br/>
+        <input type="email" required [(ngModel)]="email" #myEmail="ngModel" email name="email" id="email">
+      </div>
+      <br/><br/>
+      <div>
+        <label for="password">Password</label>
+        <br/>
+        <input type="password" required minlength="8" [(ngModel)]="password" #myPassword="ngModel" name="password" id="password">
+      </div>
+      <br/><br/>
+      <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Done</button>
+    </form>
+  </div>
+</div>
+
+
+
