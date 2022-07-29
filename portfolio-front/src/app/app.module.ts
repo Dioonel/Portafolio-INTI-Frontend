@@ -14,6 +14,7 @@ import { ProjectsComponent } from './components/projects/projects.component';
 import { EducationComponent } from './components/education/education.component';
 import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
+import { ContactComponent } from './components/contact/contact.component';
 
 @NgModule({
   declarations: [
@@ -26,6 +27,7 @@ import { IndexComponent } from './components/index/index.component';
     EducationComponent,
     LoginComponent,
     IndexComponent,
+    ContactComponent,
   ],
   imports: [
     BrowserModule,

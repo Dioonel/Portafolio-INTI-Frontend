@@ -1,0 +1,13 @@
+<div class="container">
+  <div>
+    <div [class.active]="contactStatus" [class.hidden]="!contactStatus">
+      <button (click)="toggleContact()"><fa-icon [icon]="faXmarkCircle" size="2x"></fa-icon></button>
+      <div class="inner">
+        <h2>Contact me!</h2>
+        <p><strong>E-mail:</strong> ejemplo123@gmail.com </p>
+        <p><strong>Linkedin:</strong><a href="https://www.linkedin.com/in/dionel-martinez-4b376b221/">Click here</a></p>
+        <p><strong>Github:</strong><a href="https://github.com/Dioonel">Click here</a></p>
+      </div>
+    </div>
+  </div>
+</div>

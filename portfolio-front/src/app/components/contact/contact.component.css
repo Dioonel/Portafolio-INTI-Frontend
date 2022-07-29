@@ -1,0 +1,55 @@
+.active{
+  display: grid;
+  place-items: center;
+  z-index: 10;
+  position: absolute;
+  margin: 12% 19%;
+  padding: 0% 8%;
+  background-color: rgba(11, 12, 20, 0.7);
+  border-radius: 15px;
+  color: white;
+}
+
+.active button{
+  background-color: transparent;
+  border: none;
+  float: right;
+  position: absolute;
+  top: 10px;
+  right: 5px;
+  color: rgb(167, 167, 167);
+}
+
+.active button:hover{
+  color: rgba(255, 98, 98, 0.9);
+}
+
+h2{
+  margin-bottom: 20%;
+  padding-top: 20%;
+  font-size: 40px;
+  text-align: center;
+}
+
+.active .inner {
+  padding-bottom: 20%;
+  font-size: 20px;
+  text-align: left;
+}
+
+.active .inner a{
+  margin-left: 8px;
+  text-decoration: none;
+  color: white;
+  background-color: rgb(102, 102, 102, 0.8);
+  padding: 1px 4px;
+  border-radius: 5px;
+}
+
+.active .inner a:hover{
+  background-color: rgb(135, 206, 250, 0.8);
+}
+
+.hidden{
+  display: none
+}

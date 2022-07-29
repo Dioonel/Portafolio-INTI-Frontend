@@ -1,10 +1,13 @@
-<app-nav></app-nav>
-
-<div class="container">
-  <app-header></app-header>
-  <app-about></app-about>
-  <app-skills></app-skills>
-  <app-projects></app-projects>
-  <app-education></app-education>
+<app-contact (contactChange)="updateBg()"></app-contact>
+<div [class.blur]="blurBg">
+  <app-nav (contactChange)="updateBg()"></app-nav>
+  <div class="container">
+    <app-header></app-header>
+    <app-about></app-about>
+    <app-skills></app-skills>
+    <app-projects></app-projects>
+    <app-education></app-education>
+  </div>
 </div>
+
 
