@@ -7,8 +7,8 @@
 
       <div *ngFor="let project of projectsData" class="div-project-item">
           <img [src]="project.icon">
-          <a class="project-name" [href]="project.link">{{ project.name }}</a> <br/> <br/>
-          <span class="project-info">{{ project.description }}</span>
+          <a class="project-name" [href]="project.link">{{ project.name }}</a>
+          <p class="project-info">{{ project.description }}</p>
       </div>
 
       <div class="div-title">

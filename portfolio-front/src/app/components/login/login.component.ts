@@ -18,5 +18,6 @@ export class LoginComponent implements OnInit {
 
   submitForm(){
     console.log(this.email, this.password);
+    location.href = '/';
   }
 }
