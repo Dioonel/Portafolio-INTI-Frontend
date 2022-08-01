@@ -25,10 +25,17 @@
 }
 
 h2{
-  margin-bottom: 20%;
-  padding-top: 20%;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
   font-size: 40px;
   text-align: center;
+  margin-bottom: 20%;
+  padding-top: 20%;
+}
+
+p{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 400;
 }
 
 .active .inner {

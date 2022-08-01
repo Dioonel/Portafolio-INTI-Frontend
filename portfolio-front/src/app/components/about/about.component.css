@@ -1,0 +1,13 @@
+.div-text{
+  font-family: 'Roboto', sans-serif;
+  font-weight: 300;
+  font-size: 15px;
+  white-space: pre-wrap;
+  padding: 0px 25px 8px 25px;
+}
+
+.div-text strong{
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 700;
+  font-size: 17px;
+}
