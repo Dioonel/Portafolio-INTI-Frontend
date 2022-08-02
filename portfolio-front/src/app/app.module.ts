@@ -17,6 +17,10 @@ import { IndexComponent } from './components/index/index.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { AboutEditComponent } from './components/about-edit/about-edit.component';
 import { AutosizeModule } from 'ngx-autosize';
+import { SkillsEditComponent } from './components/skills-edit/skills-edit.component';
+import { EducationEditComponent } from './components/education-edit/education-edit.component';
+import { ProjectsEditComponent } from './components/projects-edit/projects-edit.component';
+import { HeaderEditComponent } from './components/header-edit/header-edit.component';
 
 @NgModule({
   declarations: [
@@ -31,6 +35,10 @@ import { AutosizeModule } from 'ngx-autosize';
     IndexComponent,
     ContactComponent,
     AboutEditComponent,
+    SkillsEditComponent,
+    EducationEditComponent,
+    ProjectsEditComponent,
+    HeaderEditComponent,
   ],
   imports: [
     BrowserModule,

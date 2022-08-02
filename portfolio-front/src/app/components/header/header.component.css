@@ -26,15 +26,16 @@
   height: 200px;
 }
 
-.div-pp button{
+.div-pp .header-edit-btn{
   position: absolute;
-  bottom: -55px;
   left: 245px;
-  height: 35px;
+  bottom: -60px;
   border-radius: 20px;
+  height: 35px;
+  width: 35px;
 }
 
-.div-pp button:hover{
+.div-pp .header-edit-btn:hover{
   background-color: orange;
 }
 

@@ -2,14 +2,31 @@
 <div [class.blur]="blurBg">
   <app-nav (contactChange)="updateBg()"></app-nav>
   <div class="container">
-    <app-header></app-header>
+
+    <app-header *ngIf="headerEdit === false; else headerElse"></app-header>
+    <ng-template #headerElse>
+      <app-header-edit></app-header-edit>
+    </ng-template>
+
     <app-about *ngIf="aboutEdit === false; else aboutElse"></app-about>
     <ng-template #aboutElse>
       <app-about-edit></app-about-edit>
     </ng-template>
-    <app-skills></app-skills>
-    <app-projects></app-projects>
-    <app-education></app-education>
+
+    <app-skills *ngIf="skillsEdit === false; else skillsElse"></app-skills>
+    <ng-template #skillsElse>
+      <app-skills-edit></app-skills-edit>
+    </ng-template>
+
+    <app-projects *ngIf="projectsEdit === false; else projectsElse"></app-projects>
+    <ng-template #projectsElse>
+      <app-projects-edit></app-projects-edit>
+    </ng-template>
+
+    <app-education *ngIf="educationEdit === false; else educationElse"></app-education>
+    <ng-template #educationElse>
+      <app-education-edit></app-education-edit>
+    </ng-template>
   </div>
 </div>
 

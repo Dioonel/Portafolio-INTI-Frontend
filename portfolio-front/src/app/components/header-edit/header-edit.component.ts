@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from './../../services/data.service';
 import { HeaderData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+  selector: 'app-header-edit',
+  templateUrl: './header-edit.component.html',
+  styleUrls: ['./header-edit.component.css']
 })
-export class HeaderComponent implements OnInit {
-  faEdit = faEdit;
+export class HeaderEditComponent implements OnInit {
+  faCheck = faCheck;
+  faXmark = faXmark;
   headerData!: HeaderData;
 
   constructor(private dataService: DataService, private editService: EditService) { }
@@ -19,10 +20,15 @@ export class HeaderComponent implements OnInit {
     this.dataService.getData()
     .subscribe(data => {
       this.headerData = data['header-data'];
-    })
+    });
   }
 
-  toggleEdit(){
+  cancelEdit(){
+    this.editService.toggleHeaderEdit();
+  }
+
+  saveEdit(){
+    // wip
     this.editService.toggleHeaderEdit();
   }
 

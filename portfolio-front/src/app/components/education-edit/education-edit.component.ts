@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from './../../services/data.service';
 import { EducationData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
 
 @Component({
-  selector: 'app-education',
-  templateUrl: './education.component.html',
-  styleUrls: ['./education.component.css']
+  selector: 'app-education-edit',
+  templateUrl: './education-edit.component.html',
+  styleUrls: ['./education-edit.component.css']
 })
-export class EducationComponent implements OnInit {
-  faEdit = faEdit;
+export class EducationEditComponent implements OnInit {
+  faCheck = faCheck;
+  faXmark = faXmark;
   educationData!: EducationData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
@@ -22,7 +23,13 @@ export class EducationComponent implements OnInit {
     });
   }
 
-  toggleEdit(){
+  cancelEdit(){
     this.editService.toggleEducationEdit();
   }
+
+  saveEdit(){
+    // wip
+    this.editService.toggleEducationEdit();
+  }
+
 }

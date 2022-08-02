@@ -1,0 +1,27 @@
+@import url(./../header/header.component.css);
+
+.header-save-btn{
+  position: absolute;
+  bottom: -60px;
+  left: 300px;
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
+}
+
+.header-save-btn:hover{
+  background-color: rgba(31, 195, 22, 0.5);
+}
+
+.header-cancel-btn{
+  position: absolute;
+  bottom: -60px;
+  left: 245px;
+  height: 35px;
+  width: 35px;
+  border-radius: 20px;
+}
+
+.header-cancel-btn:hover{
+  background-color: rgb(255, 0, 0, 0.5);
+}

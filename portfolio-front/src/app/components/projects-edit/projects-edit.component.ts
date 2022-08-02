@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
+import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from './../../services/data.service';
 import { ProjectsData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
 
 @Component({
-  selector: 'app-projects',
-  templateUrl: './projects.component.html',
-  styleUrls: ['./projects.component.css']
+  selector: 'app-projects-edit',
+  templateUrl: './projects-edit.component.html',
+  styleUrls: ['./projects-edit.component.css']
 })
-export class ProjectsComponent implements OnInit {
-  faEdit = faEdit;
+export class ProjectsEditComponent implements OnInit {
+  faCheck = faCheck;
+  faXmark = faXmark;
   projectsData!: ProjectsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
@@ -22,7 +23,13 @@ export class ProjectsComponent implements OnInit {
     })
   }
 
-  toggleEdit(){
+  cancelEdit(){
     this.editService.toggleProjectsEdit();
   }
+
+  saveEdit(){
+    // wip
+    this.editService.toggleProjectsEdit();
+  }
+
 }

@@ -1,0 +1,22 @@
+<div class="div-box">
+
+  <div class="div-banner">
+      <img class="banner" [src]="headerData.banner">
+  </div>
+  <div class="div-pp">
+      <img class="pp" [src]="headerData.pp">
+      <button (click)="cancelEdit()" class="header-cancel-btn"><fa-icon [icon]="faXmark"></fa-icon></button>
+      <button (click)="saveEdit()" class="header-save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
+  </div>
+  <br/> <br/> <br/> <br/>
+  <div class="div-user">
+      <h3> {{ headerData.name }} </h3>
+      <div class="div-user-info">
+          <p> {{ headerData.position }} </p>
+          <p> {{ headerData.country }} </p>
+      </div>
+  </div>
+
+</div>
+
+

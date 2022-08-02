@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import { faEdit } from '@fortawesome/free-regular-svg-icons';
+import { faCheck, faX, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from './../../services/data.service';
 import { SkillsData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
 
 @Component({
-  selector: 'app-skills',
-  templateUrl: './skills.component.html',
-  styleUrls: ['./skills.component.css']
+  selector: 'app-skills-edit',
+  templateUrl: './skills-edit.component.html',
+  styleUrls: ['./skills-edit.component.css']
 })
-export class SkillsComponent implements OnInit {
-  faEdit = faEdit;
+export class SkillsEditComponent implements OnInit {
+  faCheck = faCheck;
+  faXmark = faXmark;
   skillsData!: SkillsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
@@ -19,10 +20,15 @@ export class SkillsComponent implements OnInit {
     this.dataService.getData()
     .subscribe(data => {
       this.skillsData = data['skills-data'];
-    })
+    });
   }
 
-  toggleEdit(){
+  cancelEdit(){
+    this.editService.toggleSkillsEdit();
+  }
+
+  saveEdit(){
+    // wip
     this.editService.toggleSkillsEdit();
   }
 }

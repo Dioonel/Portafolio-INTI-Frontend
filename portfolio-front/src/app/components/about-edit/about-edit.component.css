@@ -1,23 +1,5 @@
 @import url(./../about/about.component.css);
 
-.save-btn{
-  margin: 5px 5px 0px 0px;
-  border-radius: 20px;
-}
-
-.cancel-btn{
-  margin: 5px 5px 0px 0px;
-  border-radius: 20px;
-}
-
-.save-btn:hover{
-  background-color: rgba(31, 195, 22, 0.5);
-}
-
-.cancel-btn:hover{
-  background-color: rgb(255, 0, 0, 0.5);
-}
-
 textarea{
   width: 100%;
   height: 110%;
