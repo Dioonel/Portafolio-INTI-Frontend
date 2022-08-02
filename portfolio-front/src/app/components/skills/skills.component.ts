@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faEdit } from '@fortawesome/free-regular-svg-icons';
 import { DataService } from './../../services/data.service';
 import { SkillsData } from './../../models/data.model';
 
@@ -8,7 +9,7 @@ import { SkillsData } from './../../models/data.model';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
-
+  faEdit = faEdit;
   skillsData!: SkillsData[];
 
   constructor(private dataService: DataService) { }

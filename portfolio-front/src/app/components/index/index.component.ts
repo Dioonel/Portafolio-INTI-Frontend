@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EditService } from './../../services/edit.service';
 
 @Component({
   selector: 'app-index',
@@ -7,10 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class IndexComponent implements OnInit {
   blurBg = false;
+  aboutEdit!: boolean;
 
-  constructor() { }
+  constructor(private editService: EditService) { }
 
   ngOnInit(): void {
+    this.editService.aboutEdit$.subscribe(status => {
+      this.aboutEdit = status;
+    });
   }
 
   updateBg(){

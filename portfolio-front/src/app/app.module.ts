@@ -15,6 +15,8 @@ import { EducationComponent } from './components/education/education.component';
 import { LoginComponent } from './components/login/login.component';
 import { IndexComponent } from './components/index/index.component';
 import { ContactComponent } from './components/contact/contact.component';
+import { AboutEditComponent } from './components/about-edit/about-edit.component';
+import { AutosizeModule } from 'ngx-autosize';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,7 @@ import { ContactComponent } from './components/contact/contact.component';
     LoginComponent,
     IndexComponent,
     ContactComponent,
+    AboutEditComponent,
   ],
   imports: [
     BrowserModule,
@@ -35,6 +38,7 @@ import { ContactComponent } from './components/contact/contact.component';
     FontAwesomeModule,
     HttpClientModule,
     FormsModule,
+    AutosizeModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

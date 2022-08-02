@@ -14,7 +14,7 @@ export interface AboutData {
 export interface EducationData {
   title: string;
   date:  string;
-  icon:  string; 
+  icon:  string;
 }
 
 export interface HeaderData {
@@ -36,3 +36,5 @@ export interface SkillsData {
   skill: string;
   value: number;
 }
+
+export interface UpdateAboutData extends Partial<AboutData> { }

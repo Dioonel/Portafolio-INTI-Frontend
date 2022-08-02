@@ -3,7 +3,10 @@
   <app-nav (contactChange)="updateBg()"></app-nav>
   <div class="container">
     <app-header></app-header>
-    <app-about></app-about>
+    <app-about *ngIf="aboutEdit === false; else aboutElse"></app-about>
+    <ng-template #aboutElse>
+      <app-about-edit></app-about-edit>
+    </ng-template>
     <app-skills></app-skills>
     <app-projects></app-projects>
     <app-education></app-education>
