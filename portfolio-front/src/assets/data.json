@@ -12,18 +12,22 @@
   },
   "skills-data": [
     {
+      "id": 1,
       "skill": "Logic & algorithmic thinking",
       "value": 80
     },
     {
+      "id": 2,
       "skill": "Teamwork",
       "value": 30
     },
     {
+      "id": 3,
       "skill": "Good practices",
       "value": 65
     },
     {
+      "id": 4,
       "skill": "Creativity",
       "value": 40
     }

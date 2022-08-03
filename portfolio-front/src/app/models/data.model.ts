@@ -33,6 +33,7 @@ export interface ProjectsData {
 }
 
 export interface SkillsData {
+  id: number;
   skill: string;
   value: number;
 }
