@@ -25,3 +25,37 @@
 .header-cancel-btn:hover{
   background-color: rgb(255, 0, 0, 0.5);
 }
+
+.banner:hover, .pp:hover{
+  filter: brightness(50%);
+}
+
+.header-edit-name{
+    width: 350px;
+    border: none;
+    padding: 3px;
+    border-radius: 5px;
+    background-color: rgb(128, 128, 128, 0.3);
+    font-weight: 500;
+    font-size: 20px;
+}
+
+.header-edit-name:hover{
+  background-color: rgb(128, 128, 128, 0.6);
+}
+
+.header-edit-position, .header-edit-country{
+  width: 250px;
+  border: none;
+  background-color: rgb(128, 128, 128, 0.3);
+  border-radius: 5px;
+  padding: 3px;
+  margin-top: 10px;
+  font-weight: 400;
+  font-size: 15px;
+  display: block;
+}
+
+.header-edit-position:hover, .header-edit-country:hover{
+  background-color: rgb(128, 128, 128, 0.6);
+}

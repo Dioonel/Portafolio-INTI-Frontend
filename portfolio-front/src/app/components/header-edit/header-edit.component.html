@@ -10,10 +10,10 @@
   </div>
   <br/> <br/> <br/> <br/>
   <div class="div-user">
-      <h3> {{ headerData.name }} </h3>
+    <input type="text" class="header-edit-name" required [value]="headerData.name" [(ngModel)]="headerData.name">
       <div class="div-user-info">
-          <p> {{ headerData.position }} </p>
-          <p> {{ headerData.country }} </p>
+        <input type="text" class="header-edit-position" required [value]="headerData.position" [(ngModel)]="headerData.position">
+        <input type="text" class="header-edit-country" required [value]="headerData.country" [(ngModel)]="headerData.country">
       </div>
   </div>
 

@@ -3,6 +3,7 @@ import { faCheck, faXmark } from '@fortawesome/free-solid-svg-icons';
 import { DataService } from './../../services/data.service';
 import { HeaderData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-header-edit',
@@ -29,6 +30,7 @@ export class HeaderEditComponent implements OnInit {
 
   saveEdit(){
     // wip
+    console.log(this.headerData);
     this.editService.toggleHeaderEdit();
   }
 
