@@ -34,12 +34,14 @@
   ],
   "projects-data": [
     {
+      "id": 1,
       "name": "e-Commerce",
       "description": "Full e-Commerce website. Back-end & API made with Node.js, Express, MongoDB (Mongoose), Passport and JWT. Basic front-end made with native HTML, CSS and JavaScript.",
       "icon": "https://cdn-icons-png.flaticon.com/512/57/57589.png",
       "link": "https://github.com/Dioonel/REST-API"
     },
     {
+      "id": 2,
       "name": "Date calculator",
       "description": "Calculate how many time exists between 2 dates. Made with Python, using mathematic algorithms and programming logic, without any libraries nor other facilities.",
       "icon": "https://a.slack-edge.com/80588/img/calendar/calendar-emoji.png",

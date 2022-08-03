@@ -46,7 +46,6 @@ export class SkillsEditComponent implements OnInit {
   addSkill(){
     this.skillsData.push({id: this.idMock, skill: 'new skill', value: 50});
     this.idMock++;
-    console.log(this.skillsData);
   }
 
   popSkill(id: number){

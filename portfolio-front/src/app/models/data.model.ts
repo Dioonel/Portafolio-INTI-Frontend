@@ -26,6 +26,7 @@ export interface HeaderData {
 }
 
 export interface ProjectsData {
+  id: number;
   name:        string;
   description: string;
   icon:        string;

@@ -24,7 +24,7 @@
   float: left;
 }
 
-.div-project-item img, .div-education-item img{
+.div-project-item .project-img, .div-education-item img{
   border: 1px solid black;
   margin: 15px 10px 35px 20px;
   padding: 5px;
@@ -38,7 +38,7 @@
   font-weight: 700;
   font-size: 20px;
   text-decoration: none;
-  display: block;
+  display: flex;
   position: relative;
   margin-top: 15px;
   margin-bottom: 10px;
@@ -106,3 +106,4 @@
 .cancel-btn:hover{
   background-color: rgb(255, 0, 0, 0.5);
 }
+
