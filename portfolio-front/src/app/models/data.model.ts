@@ -12,6 +12,7 @@ export interface AboutData {
 }
 
 export interface EducationData {
+  id: number;
   title: string;
   date:  string;
   icon:  string;

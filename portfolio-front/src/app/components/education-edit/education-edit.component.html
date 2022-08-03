@@ -7,12 +7,17 @@
   <div class="div-education">
       <div class="div-title">
           <h1>Education</h1>
+          <div class="div-new-education">
+            <label><strong> Add a new achievement </strong></label>
+            <button (click)="addEducation()"><fa-icon [icon]="faPlus"></fa-icon></button>
+          </div>
       </div>
 
       <div *ngFor="let education of educationData" class="div-education-item">
-          <img [src]="education.icon">
-          <p class="education-title">{{ education.title }}</p>
-          <p class="education-date">{{ education.date }}</p>
+          <img class="img-edit" [src]="education.icon">
+          <input type="text" class="education-edit-name" required [value]="education.title" [(ngModel)]="education.title">
+          <input type="text" class="education-edit-date" required [value]="education.date" [(ngModel)]="education.date">
+          <button (click)="popEducation(education.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
       </div>
 
   </div>
