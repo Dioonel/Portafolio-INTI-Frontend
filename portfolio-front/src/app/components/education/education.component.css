@@ -1,0 +1,6 @@
+@import url(./../../../styles.css);
+
+.div-item{
+  width: 100%;
+  float: left;
+}

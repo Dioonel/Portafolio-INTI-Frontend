@@ -6,13 +6,12 @@
           <h1>Skills</h1> <br/>
       </div>
 
-      <div *ngFor="let skill of skillsData" class="div-progress">
-          <div class="div-progress-item">
-              <label>{{ skill.skill }}</label> <br/>
-              <progress max="100" [value]="skill.value"></progress>
-          </div>
+      <div *ngFor="let skill of skillsData" class="div-item">
+        <div class="div-skill">
+          <label class="label-text">{{ skill.skill }}</label> <br/>
+          <progress max="100" [value]="skill.value"></progress>
+        </div>
       </div>
-
   </div>
 
 </div>

@@ -7,17 +7,17 @@
   <div class="div-projects">
       <div class="div-title">
           <h1>Projects</h1>
-          <div class="div-new-project">
+          <div class="div-new-el">
             <label><strong> Add a new project </strong></label>
-            <button (click)="addProject()"><fa-icon [icon]="faPlus"></fa-icon></button>
+            <button class="add-btn" (click)="addProject()"><fa-icon [icon]="faPlus"></fa-icon></button>
           </div>
       </div>
 
       <div *ngFor="let project of projectsData" class="div-project-item">
-          <img class="img-edit" [src]="project.icon">
-          <input type="text" class="project-edit-name" required [value]="project.name" [(ngModel)]="project.name">
-          <button (click)="popProject(project.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-<textarea autosize class="project-edit-info">
+          <img class="icon icon-edit" [src]="project.icon">
+          <input type="text" class="input-title-edit input-hover" required [value]="project.name" [(ngModel)]="project.name">
+          <button class="del-btn" (click)="popProject(project.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
+<textarea autosize class="input-edit input-hover">
 {{ project.description }}
 </textarea>
       </div>

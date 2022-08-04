@@ -7,18 +7,18 @@
   <div class="div-skills">
       <div class="div-title">
           <h1>Skills</h1>
-          <div class="div-new-skill">
+          <div class="div-new-el">
             <label><strong> Add a new skill </strong></label>
-            <button (click)="addSkill()"><fa-icon [icon]="faPlus"></fa-icon></button>
+            <button class="add-btn" (click)="addSkill()"><fa-icon [icon]="faPlus"></fa-icon></button>
           </div>
       </div>
 
-      <div *ngFor="let skill of skillsData" class="div-progressV2">
-          <div class="div-progress-item">
-              <button (click)="popSkill(skill.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-              <input type="text" [value]="skill.skill"> <br/>
+      <div *ngFor="let skill of skillsData" class="div-item">
+          <div class="div-skill-edit">
+              <button class="del-btn" (click)="popSkill(skill.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
+              <input type="text" class="input-edit input-hover" [value]="skill.skill"> <br/>
               <label>Value:
-                <input style="width: 55px" type="number" min="0" max="100"
+                <input type="number" class="input-edit input-hover" min="0" max="100" style="width: 55px"
                 [placeholder]="skill.value" (change)="changeProgress($event, skill)">
               </label>
               <progress [id]="skill.id" max="100" [value]="skill.value"></progress>

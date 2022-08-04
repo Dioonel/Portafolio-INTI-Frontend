@@ -6,8 +6,8 @@
           <h1>Projects</h1>
       </div>
 
-      <div *ngFor="let project of projectsData" class="div-project-item">
-          <img class="project-img" [src]="project.icon">
+      <div *ngFor="let project of projectsData" class="div-item">
+          <img class="icon" [src]="project.icon">
           <a class="project-name" [href]="project.link" target="_blank">{{ project.name }}</a>
           <p class="project-info">{{ project.description }}</p>
       </div>

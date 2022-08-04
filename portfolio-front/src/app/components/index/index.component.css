@@ -1,3 +1,5 @@
+@import url(./../../../styles.css);
+
 .blur{
   filter: blur(4px) brightness(0.5);
   background-color: grey;

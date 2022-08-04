@@ -1,19 +1,18 @@
-.div-progress{
+@import url(./../../../styles.css);
+
+.div-item{
   padding: 0px 25px 8px 25px;
   display: inline-flex;
   gap: 50px;
+  overflow: auto;
 }
 
-.div-progress label{
+.div-item .label-text{
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-weight: 700;
   font-size: 17px;
 }
 
-.div-progress-item{
-  overflow: auto;
-}
-
-.div-progress-item progress{
+.div-item progress{
   width: 250px;
 }

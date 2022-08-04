@@ -6,8 +6,8 @@
           <h1>Education</h1>
       </div>
 
-      <div *ngFor="let education of educationData" class="div-education-item">
-          <img [src]="education.icon">
+      <div *ngFor="let education of educationData" class="div-item">
+          <img class="icon" [src]="education.icon">
           <p class="education-title">{{ education.title }}</p>
           <p class="education-date">{{ education.date }}</p>
       </div>

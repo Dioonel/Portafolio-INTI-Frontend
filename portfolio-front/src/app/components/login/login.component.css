@@ -52,6 +52,9 @@ form{
   width: 100%;
 }
 
+.form div input:hover{
+  background-color: rgba(153, 153, 153, 0.5);
+}
 
 .form button:disabled{
   background-color: grey;
