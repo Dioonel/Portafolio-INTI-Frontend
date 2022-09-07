@@ -18,9 +18,9 @@ export class HeaderEditComponent implements OnInit {
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
+    this.dataService.getHeader()
     .subscribe(data => {
-      this.headerData = data['header-data'];
+      this.headerData = data;
     });
   }
 
@@ -29,9 +29,9 @@ export class HeaderEditComponent implements OnInit {
   }
 
   saveEdit(){
-    // wip
-    console.log(this.headerData);
-    this.editService.toggleHeaderEdit();
+    this.dataService.updateHeader(this.headerData)
+    .subscribe(data => {
+      this.editService.toggleHeaderEdit();
+    });
   }
-
 }

@@ -5,6 +5,9 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class EditService {
+  private authEditObs = new BehaviorSubject<boolean>(false);
+  authEdit$ = this.authEditObs.asObservable();
+
   private headerEdit: boolean = false;
   private headerEditObs = new BehaviorSubject<boolean>(this.headerEdit);
   headerEdit$ = this.headerEditObs.asObservable();
@@ -26,6 +29,15 @@ export class EditService {
   educationEdit$ = this.educationEditObs.asObservable();
 
   constructor() { }
+
+  authEditCheck(){
+    let token = sessionStorage.getItem('jwt');
+    if(token !== null && token !== '' && token !== 'null'){
+      this.authEditObs.next(true);
+    } else {
+      this.authEditObs.next(false);
+    }
+  }
 
   toggleHeaderEdit(){
     this.headerEdit = !this.headerEdit;

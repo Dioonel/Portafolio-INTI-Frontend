@@ -18,9 +18,9 @@ export class AboutEditComponent implements OnInit{
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
+    this.dataService.getAbout()
     .subscribe(data => {
-      this.aboutData = data['about-data'];
+      this.aboutData = data;
     });
   }
 
@@ -29,8 +29,11 @@ export class AboutEditComponent implements OnInit{
   }
 
   saveEdit(){
-    // wip
-    this.editService.toggleAboutEdit();
+    this.dataService.updateAbout(this.aboutData)
+    .subscribe(data => {
+      console.log(data);
+      this.editService.toggleAboutEdit();
+    });
   }
 
 }

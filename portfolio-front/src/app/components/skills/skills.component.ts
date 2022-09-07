@@ -10,16 +10,21 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
+  editAuth!: boolean;
   faEdit = faEdit;
   skillsData!: SkillsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
+    this.editService.authEdit$.subscribe(status => {
+      this.editAuth = status;
+    });
+
+    this.dataService.getSkills()
     .subscribe(data => {
-      this.skillsData = data['skills-data'];
-    })
+      this.skillsData = data;
+    });
   }
 
   toggleEdit(){

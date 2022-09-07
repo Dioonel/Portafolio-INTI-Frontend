@@ -15,41 +15,85 @@ export class ProjectsEditComponent implements OnInit {
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
-  idMock: number = 3;
   projectsData!: ProjectsData[];
+  addedProjects: ProjectsData[] = [];
+  deletedProjects: ProjectsData[] = [];
+  projectsDataCopy!: ProjectsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
-    .subscribe(data => {
-      this.projectsData = data['projects-data'];
-    })
+    this.dataService.getProjects().subscribe(data => {
+      this.projectsData = data;
+      this.projectsDataCopy = JSON.parse(JSON.stringify(this.projectsData));
+    });
   }
 
   cancelEdit(){
-    this.editService.toggleProjectsEdit();
+    if(this.addedProjects.length > 0){
+      for(let project of this.addedProjects){
+        this.dataService.deleteProject(project.id).subscribe(data => {});
+      }
+    }
+
+    setTimeout(() => {
+      this.addedProjects = [];
+      this.deletedProjects = [];
+      this.editService.toggleProjectsEdit();
+    }, 350);
   }
 
   saveEdit(){
-    // wip
-    console.log(this.projectsData);
-    this.editService.toggleProjectsEdit();
+
+    if(this.deletedProjects.length > 0){
+      for(let delProject of this.deletedProjects){
+        this.dataService.deleteProject(delProject.id).subscribe(data => {});
+      }
+    }
+
+
+    if(this.projectsData.length > 0){
+      for(let project of this.projectsData){
+        let index = this.projectsData.findIndex(p => p.id == project.id);
+        if(index != -1){
+          if(this.projectsDataCopy[index]?.name != project.name || this.projectsDataCopy[index]?.description != project.description || this.projectsDataCopy[index]?.icon != project.icon || this.projectsDataCopy[index]?.link != project.link){
+            this.dataService.updateProject(project).subscribe(data => {});
+          } else {
+            continue;
+          }
+        }
+      }
+    }
+
+    setTimeout(() => {
+      this.addedProjects = [];
+      this.deletedProjects = [];
+      this.editService.toggleProjectsEdit();
+    }, 350);
   }
 
   addProject(){
-    this.projectsData.push({id: this.idMock,
+    let newProject: ProjectsData = {
       name: 'New project',
       description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-      icon: 'https://icon-library.com/images/not-found-icon/not-found-icon-28.jpg',
-      link: 'https://www.google.com'});
-    this.idMock++;
+      icon: './../../../assets/images/template-small-icon.jpg',
+      link: ''
+    }
+    this.projectsData.push(newProject);
+    this.addedProjects.push(newProject);
+
+    this.dataService.postProject(newProject).subscribe(data => {
+      let index = this.projectsData.findIndex(p => p.id == undefined);
+      this.projectsData[index].id = data.id;
+    });
   }
 
 
-  popProject(id: number){
-    let index = this.projectsData.findIndex(project => project.id === id);
-    this.projectsData.splice(index, 1);
+  popProject(id: number | undefined){
+    let index = this.projectsData.findIndex(project => project.id == id);
+    if(index != -1){
+      this.deletedProjects.push(this.projectsData[index]);
+      this.projectsData.splice(index, 1);
+    }
   }
-
 }

@@ -15,11 +15,10 @@
 
       <div *ngFor="let project of projectsData" class="div-project-item">
           <img class="icon icon-edit" [src]="project.icon">
-          <input type="text" class="input-title-edit input-hover" required [value]="project.name" [(ngModel)]="project.name">
-          <button class="del-btn" (click)="popProject(project.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-<textarea autosize class="input-edit input-hover">
-{{ project.description }}
-</textarea>
+          <input type="text" class="input-title-edit input-hover" required [value]="project.name" [(ngModel)]="project.name" placeholder="Title...">
+          <input type="text" class="input-url-edit input-hover" required [value]="project.link" [(ngModel)]="project.link" placeholder="URL (optional)" style="width: 450px; font-weight: 400;">
+          <button class="del-btn" (click)="popProject(project?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
+<textarea autosize class="input-edit input-hover" [value]="project.description" [(ngModel)]="project.description" placeholder="Description..."></textarea>
       </div>
 
       <div class="div-title">

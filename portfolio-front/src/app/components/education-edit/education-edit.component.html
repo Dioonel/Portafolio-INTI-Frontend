@@ -5,20 +5,20 @@
     <button (click)="saveEdit()" class="save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
   <div class="div-education">
-      <div class="div-title">
-          <h1>Education</h1>
-          <div class="div-new-el">
-            <label><strong> Add a new achievement </strong></label>
-            <button class="add-btn" (click)="addEducation()"><fa-icon [icon]="faPlus"></fa-icon></button>
-          </div>
+    <div class="div-title">
+      <h1>Education</h1>
+      <div class="div-new-el">
+        <label><strong> Add a new achievement </strong></label>
+        <button class="add-btn" (click)="addEducation()"><fa-icon [icon]="faPlus"></fa-icon></button>
       </div>
+    </div>
 
-      <div *ngFor="let education of educationData" class="div-item">
-          <img class="icon icon-edit" [src]="education.icon">
-          <input type="text" class="input-title-edit input-hover" required [value]="education.title" [(ngModel)]="education.title">
-          <input type="text" class="input-edit input-hover" required [value]="education.date" [(ngModel)]="education.date">
-          <button class="del-btn" (click)="popEducation(education.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-      </div>
+    <div *ngFor="let education of educationData" class="div-item">
+      <img class="icon icon-edit" [src]="education.icon">
+      <input type="text" class="input-title-edit input-hover" required [value]="education.title" [(ngModel)]="education.title" placeholder="Title...">
+      <input type="date" class="input-edit input-hover" required [value]="education.date" [(ngModel)]="education.date" placeholder="Date...">
+      <button class="del-btn" (click)="popEducation(education?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
+    </div>
 
   </div>
 

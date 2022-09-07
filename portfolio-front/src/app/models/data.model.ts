@@ -12,7 +12,7 @@ export interface AboutData {
 }
 
 export interface EducationData {
-  id: number;
+  id?: number;
   title: string;
   date:  string;
   icon:  string;
@@ -27,7 +27,7 @@ export interface HeaderData {
 }
 
 export interface ProjectsData {
-  id: number;
+  id?: number;
   name:        string;
   description: string;
   icon:        string;
@@ -35,7 +35,7 @@ export interface ProjectsData {
 }
 
 export interface SkillsData {
-  id: number;
+  id?: number;
   skill: string;
   value: number;
 }

@@ -17,6 +17,7 @@ export class IndexComponent implements OnInit {
   constructor(private editService: EditService) { }
 
   ngOnInit(): void {
+    this.editService.authEditCheck();
     this.editService.headerEdit$.subscribe(status => {
       this.headerEdit = status;
     });

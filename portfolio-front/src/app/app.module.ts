@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -21,6 +21,8 @@ import { SkillsEditComponent } from './components/skills-edit/skills-edit.compon
 import { EducationEditComponent } from './components/education-edit/education-edit.component';
 import { ProjectsEditComponent } from './components/projects-edit/projects-edit.component';
 import { HeaderEditComponent } from './components/header-edit/header-edit.component';
+
+import { InterceptorService } from './services/interceptor.service';
 
 @NgModule({
   declarations: [
@@ -48,7 +50,9 @@ import { HeaderEditComponent } from './components/header-edit/header-edit.compon
     FormsModule,
     AutosizeModule,
   ],
-  providers: [],
+  providers: [{
+    provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

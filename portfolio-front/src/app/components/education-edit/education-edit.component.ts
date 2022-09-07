@@ -3,6 +3,7 @@ import { faCheck, faXmark, faPlus, faMinus } from '@fortawesome/free-solid-svg-i
 import { DataService } from './../../services/data.service';
 import { EducationData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
+import { format, isEqual, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-education-edit',
@@ -14,38 +15,84 @@ export class EducationEditComponent implements OnInit {
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
-  idMock: number = 4
   educationData!: EducationData[];
+  addedEducation: EducationData[] = [];
+  deletedEducation: EducationData[] = [];
+  educationDataCopy!: EducationData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
-    .subscribe(data => {
-      this.educationData = data['education-data'];
+    this.dataService.getEducation().subscribe(data => {
+      this.educationData = data;
+      this.educationDataCopy = JSON.parse(JSON.stringify(this.educationData));
     });
   }
 
   cancelEdit(){
-    this.editService.toggleEducationEdit();
+    if(this.addedEducation.length > 0){
+      for(let education of this.addedEducation){
+        this.dataService.deleteEducation(education.id).subscribe(data => {});
+      }
+    }
+
+    setTimeout(() => {
+      this.addedEducation = [];
+      this.deletedEducation = [];
+      this.editService.toggleEducationEdit();
+    }, 350);
   }
 
   saveEdit(){
-    // wip
-    console.log(this.educationData);
-    this.editService.toggleEducationEdit();
+
+    if(this.deletedEducation.length > 0){
+      for(let delEducation of this.deletedEducation){
+        this.dataService.deleteEducation(delEducation.id).subscribe(data => {});
+      }
+    }
+
+
+    if(this.educationData.length > 0){
+      for(let education of this.educationData){
+        let index = this.educationData.findIndex(e => e.id == education.id);
+        if(index != -1){
+          if(this.educationDataCopy[index]?.title != education.title || this.educationDataCopy[index]?.icon != education.icon || this.educationDataCopy[index].date != education.date){
+            education.date = format(parseISO(education.date), 'yyyy-MM-dd');
+            this.dataService.updateEducation(education).subscribe(data => {});
+          } else {
+            continue;
+          }
+        }
+      }
+    }
+
+    setTimeout(() => {
+      this.addedEducation = [];
+      this.deletedEducation = [];
+      this.editService.toggleEducationEdit();
+    }, 350);
   }
 
   addEducation(){
-    this.educationData.push({id: this.idMock,
-      title: "Title / Certificate / Career / Course",
-      date: '2022, August',
-      icon: 'https://icon-library.com/images/not-found-icon/not-found-icon-28.jpg'});
-    this.idMock++;
+    let newEducation: EducationData = {
+      title: "New title",
+      date: format(new Date(), 'yyyy-MM-dd'),
+      icon: './../../../assets/images/template-small-icon.jpg'};
+    this.educationData.push(newEducation);
+    this.addedEducation.push(newEducation);
+
+    this.dataService.postEducation(newEducation).subscribe(data => {
+      let index = this.educationData.findIndex(e => e.id == undefined);
+      this.educationData[index].id = data.id;
+    });
   }
 
-  popEducation(id: number){
-    let index = this.educationData.findIndex(education => education.id === id);
-    this.educationData.splice(index, 1);
+
+  popEducation(id: number | undefined){
+    let index = this.educationData.findIndex(education => education.id == id);
+    if(index != -1){
+      this.deletedEducation.push(this.educationData[index]);
+      this.educationData.splice(index, 1);
+    }
   }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgModel } from '@angular/forms';
+import { DataService } from './../../services/data.service'
 
 @Component({
   selector: 'app-login',
@@ -8,16 +9,22 @@ import { NgModel } from '@angular/forms';
 })
 export class LoginComponent implements OnInit {
 
-  email: string = '';
+  username: string = '';
   password: string = '';
 
-  constructor() { }
+  constructor(private dataService: DataService) { }
 
   ngOnInit(): void {
   }
 
   submitForm(){
-    console.log(this.email, this.password);
-    location.href = '/';
+    console.log(this.username, this.password);
+    this.dataService.login(this.username, this.password)
+    .subscribe(data => {
+      if(data !== null){
+        sessionStorage.setItem('jwt', data);
+        location.href = '';
+      }
+    });
   }
 }

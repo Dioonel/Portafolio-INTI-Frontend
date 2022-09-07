@@ -10,15 +10,20 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  editAuth!: boolean;
   faEdit = faEdit;
   aboutData!: AboutData;
 
   constructor(protected dataService: DataService, protected editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
+    this.editService.authEdit$.subscribe(status => {
+      this.editAuth = status;
+    });
+
+    this.dataService.getAbout()
     .subscribe(data => {
-      this.aboutData = data['about-data'];
+      this.aboutData = data;
     });
   }
 

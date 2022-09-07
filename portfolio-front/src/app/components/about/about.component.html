@@ -1,13 +1,13 @@
 <div class="div-box">
 
-  <button (click)="toggleEdit()" class="edit-btn"><fa-icon [icon]="faEdit"></fa-icon></button>
+  <button (click)="toggleEdit()" class="edit-btn" [class.hidden]="!editAuth"> <fa-icon [icon]="faEdit"></fa-icon></button>
   <div class="div-title">
       <h1>About me...</h1>
   </div>
   <div class="div-text">
 <strong>Español:</strong>
 {{ aboutData.spanish }}
-...
+<br/>
 <strong>English:</strong>
 {{ aboutData.english }}
   </div>

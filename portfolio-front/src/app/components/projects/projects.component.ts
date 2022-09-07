@@ -10,15 +10,20 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./projects.component.css']
 })
 export class ProjectsComponent implements OnInit {
+  editAuth!: boolean;
   faEdit = faEdit;
   projectsData!: ProjectsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getData()
+    this.editService.authEdit$.subscribe(status => {
+      this.editAuth = status;
+    });
+
+    this.dataService.getProjects()
     .subscribe(data => {
-      this.projectsData = data['projects-data'];
+      this.projectsData = data;
     })
   }
 

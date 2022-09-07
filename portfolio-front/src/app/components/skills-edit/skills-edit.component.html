@@ -5,25 +5,24 @@
     <button (click)="saveEdit()" class="save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
   <div class="div-skills">
-      <div class="div-title">
-          <h1>Skills</h1>
-          <div class="div-new-el">
-            <label><strong> Add a new skill </strong></label>
-            <button class="add-btn" (click)="addSkill()"><fa-icon [icon]="faPlus"></fa-icon></button>
-          </div>
+    <div class="div-title">
+      <h1>Skills</h1>
+      <div class="div-new-el">
+        <label><strong> Add a new skill </strong></label>
+        <button class="add-btn" (click)="addSkill()"><fa-icon [icon]="faPlus"></fa-icon></button>
       </div>
+    </div>
 
-      <div *ngFor="let skill of skillsData" class="div-item">
-          <div class="div-skill-edit">
-              <button class="del-btn" (click)="popSkill(skill.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-              <input type="text" class="input-edit input-hover" [value]="skill.skill"> <br/>
-              <label>Value:
-                <input type="number" class="input-edit input-hover" min="0" max="100" style="width: 55px"
-                [placeholder]="skill.value" (change)="changeProgress($event, skill)">
-              </label>
-              <progress [id]="skill.id" max="100" [value]="skill.value"></progress>
-          </div>
+    <div *ngFor="let skill of skillsData" class="div-item">
+      <div class="div-skill-edit">
+        <button class="del-btn" (click)="popSkill(skill?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
+        <input type="text" class="input-edit input-hover" [value]="skill.skill" [(ngModel)]="skill.skill"> <br/>
+        <label>Value:
+          <input type="number" class="input-edit input-hover" style="width: 55px" [placeholder]="skill.value" (change)="changeProgress($event, skill)">
+        </label>
+        <progress [id]="skill.id" max="100" [value]="skill.value" [(ngModel)]="skill.value"></progress>
       </div>
+    </div>
 
   </div>
 
