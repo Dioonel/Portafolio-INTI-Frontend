@@ -1,20 +1,20 @@
 <div class="div-box">
 
-    <div class="div-banner">
-        <img class="banner" [src]="headerData.banner">
+  <div class="div-banner">
+    <img class="banner" [src]="headerData.banner" (error)="imgError($event, 'banner')">
+  </div>
+  <div class="div-pp">
+    <img class="pp" [src]="headerData.pp" (error)="imgError($event, 'pp')">
+    <button (click)="toggleEdit()" class="header-edit-btn" [class.hidden]="!editAuth"><fa-icon [icon]="faEdit"></fa-icon></button>
+  </div>
+  <br/> <br/> <br/> <br/>
+  <div class="div-user">
+    <h3> {{ headerData.name }} </h3>
+    <div class="div-user-info">
+      <p> {{ headerData.position }} </p>
+      <p> {{ headerData.country }} </p>
     </div>
-    <div class="div-pp">
-        <img class="pp" [src]="headerData.pp">
-        <button (click)="toggleEdit()" class="header-edit-btn" [class.hidden]="!editAuth"><fa-icon [icon]="faEdit"></fa-icon></button>
-    </div>
-    <br/> <br/> <br/> <br/>
-    <div class="div-user">
-        <h3> {{ headerData.name }} </h3>
-        <div class="div-user-info">
-            <p> {{ headerData.position }} </p>
-            <p> {{ headerData.country }} </p>
-        </div>
-    </div>
+  </div>
 
 </div>
 

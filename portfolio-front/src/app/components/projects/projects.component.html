@@ -2,22 +2,23 @@
 
   <button (click)="toggleEdit()" class="edit-btn" [class.hidden]="!editAuth"><fa-icon [icon]="faEdit"></fa-icon></button>
   <div class="div-projects">
-      <div class="div-title">
-          <h1>Projects</h1>
-      </div>
+    <div class="div-title">
+      <h1>Projects</h1>
+    </div>
 
-      <div *ngFor="let project of projectsData" class="div-item">
-          <img class="icon" [src]="project.icon">
-          <a class="project-name" [href]="project.link" target="_blank">{{ project.name }}</a>
-          <p class="project-info">{{ project.description }}</p>
-      </div>
+    <div *ngFor="let project of projectsData" class="div-item">
+      <img class="icon" [src]="project.icon" (error)="imgError($event)">
+      <a class="project-name" [href]="project.link" target="_blank">{{ project.name }}</a>
+      <p class="project-info">{{ project.description }}</p>
+    </div>
 
-      <div class="div-title">
-          <h1>Coming soon...</h1>
-      </div>
-      <h4>- Youtube MP3 & MP4 downloader...</h4>
-      <h4>- Twitter's friends birthday reminder...</h4>
-      <p>- Remake my previous JavaScript projects to TypeScript...</p>
+    <div class="div-title">
+      <h1>Coming soon...</h1>
+    </div>
+
+    <h4>- Youtube MP3 & MP4 downloader...</h4>
+    <h4>- Twitter's friends birthday reminder...</h4>
+    <p>- Remake my previous JavaScript projects to TypeScript...</p>
   </div>
 
 </div>

@@ -10,9 +10,9 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
+  headerData!: HeaderData;
   editAuth!: boolean;
   faEdit = faEdit;
-  headerData!: HeaderData;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
@@ -21,8 +21,7 @@ export class HeaderComponent implements OnInit {
       this.editAuth = status;
     });
 
-    this.dataService.getHeader()
-    .subscribe(data => {
+    this.dataService.getHeader().subscribe(data => {
       this.headerData = data;
     })
   }
@@ -31,4 +30,12 @@ export class HeaderComponent implements OnInit {
     this.editService.toggleHeaderEdit();
   }
 
+  imgError(event: Event, type: string){
+    let img = event.target as HTMLImageElement;
+    if(type === 'banner'){
+      img.src = './../../../assets/images/template-banner-icon.png';
+    } else {
+      img.src = './../../../assets/images/template-user-icon.jpg';
+    }
+  }
 }

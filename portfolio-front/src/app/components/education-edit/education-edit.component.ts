@@ -3,7 +3,7 @@ import { faCheck, faXmark, faPlus, faMinus } from '@fortawesome/free-solid-svg-i
 import { DataService } from './../../services/data.service';
 import { EducationData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
-import { format, isEqual, parseISO } from 'date-fns';
+import { format, parseISO } from 'date-fns';
 
 @Component({
   selector: 'app-education-edit',
@@ -11,16 +11,16 @@ import { format, isEqual, parseISO } from 'date-fns';
   styleUrls: ['./education-edit.component.css']
 })
 export class EducationEditComponent implements OnInit {
+  educationData!: EducationData[];
+  educationDataCopy!: EducationData[];
+  addedEducation: EducationData[] = [];
+  deletedEducation: EducationData[] = [];
   faCheck = faCheck;
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
-  educationData!: EducationData[];
-  addedEducation: EducationData[] = [];
-  deletedEducation: EducationData[] = [];
-  educationDataCopy!: EducationData[];
 
-  constructor(private dataService: DataService, private editService: EditService) { }
+  constructor(private dataService: DataService, private editService: EditService) { }        // Este componente aplica la misma logica explicada en los comentarios de skills-edit-component.ts
 
   ngOnInit(): void {
     this.dataService.getEducation().subscribe(data => {
@@ -57,7 +57,7 @@ export class EducationEditComponent implements OnInit {
         let index = this.educationData.findIndex(e => e.id == education.id);
         if(index != -1){
           if(this.educationDataCopy[index]?.title != education.title || this.educationDataCopy[index]?.icon != education.icon || this.educationDataCopy[index].date != education.date){
-            education.date = format(parseISO(education.date), 'yyyy-MM-dd');
+            education.date = format(parseISO(education.date), 'yyyy-MM-dd');      // Se formatea la fecha para que coincida con lo esperado en el backend
             this.dataService.updateEducation(education).subscribe(data => {});
           } else {
             continue;
@@ -86,7 +86,6 @@ export class EducationEditComponent implements OnInit {
       this.educationData[index].id = data.id;
     });
   }
-
 
   popEducation(id: number | undefined){
     let index = this.educationData.findIndex(education => education.id == id);

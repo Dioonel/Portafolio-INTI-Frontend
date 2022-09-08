@@ -10,9 +10,9 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./education.component.css']
 })
 export class EducationComponent implements OnInit {
+  educationData!: EducationData[];
   editAuth!: boolean;
   faEdit = faEdit;
-  educationData!: EducationData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
@@ -21,13 +21,17 @@ export class EducationComponent implements OnInit {
       this.editAuth = status;
     });
 
-    this.dataService.getEducation()
-    .subscribe(data => {
+    this.dataService.getEducation().subscribe(data => {
       this.educationData = data;
     });
   }
 
   toggleEdit(){
     this.editService.toggleEducationEdit();
+  }
+
+  imgError(event: Event){
+    let img = event.target as HTMLImageElement;
+    img.src = './../../../assets/images/template-education-icon.png';
   }
 }

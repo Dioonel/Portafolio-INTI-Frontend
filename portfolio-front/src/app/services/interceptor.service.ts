@@ -19,8 +19,6 @@ export class InterceptorService implements HttpInterceptor{
       });
       return next.handle(reqAuth);
     }
-
-
     return next.handle(req);
   }
 

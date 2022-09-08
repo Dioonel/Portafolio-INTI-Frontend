@@ -11,17 +11,16 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./header-edit.component.css']
 })
 export class HeaderEditComponent implements OnInit {
+  headerData!: HeaderData;
   faCheck = faCheck;
   faXmark = faXmark;
-  headerData!: HeaderData;
   bannerHover = false;
   ppHover = false;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getHeader()
-    .subscribe(data => {
+    this.dataService.getHeader().subscribe(data => {
       this.headerData = data;
     });
   }

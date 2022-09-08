@@ -11,15 +11,14 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./about-edit.component.css']
 })
 export class AboutEditComponent implements OnInit{
+  aboutData!: AboutData;
   faCheck = faCheck;
   faXmark = faXmark;
-  aboutData!: AboutData;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
   ngOnInit(): void {
-    this.dataService.getAbout()
-    .subscribe(data => {
+    this.dataService.getAbout().subscribe(data => {
       this.aboutData = data;
     });
   }
@@ -29,9 +28,7 @@ export class AboutEditComponent implements OnInit{
   }
 
   saveEdit(){
-    this.dataService.updateAbout(this.aboutData)
-    .subscribe(data => {
-      console.log(data);
+    this.dataService.updateAbout(this.aboutData).subscribe(data => {
       this.editService.toggleAboutEdit();
     });
   }

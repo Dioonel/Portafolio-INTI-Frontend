@@ -10,9 +10,9 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./about.component.css']
 })
 export class AboutComponent implements OnInit {
+  aboutData!: AboutData;
   editAuth!: boolean;
   faEdit = faEdit;
-  aboutData!: AboutData;
 
   constructor(protected dataService: DataService, protected editService: EditService) { }
 
@@ -21,8 +21,7 @@ export class AboutComponent implements OnInit {
       this.editAuth = status;
     });
 
-    this.dataService.getAbout()
-    .subscribe(data => {
+    this.dataService.getAbout().subscribe(data => {
       this.aboutData = data;
     });
   }

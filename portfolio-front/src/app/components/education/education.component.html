@@ -2,15 +2,15 @@
 
   <button (click)="toggleEdit()" class="edit-btn" [class.hidden]="!editAuth"><fa-icon [icon]="faEdit"></fa-icon></button>
   <div class="div-education">
-      <div class="div-title">
-          <h1>Education</h1>
-      </div>
+    <div class="div-title">
+      <h1>Education</h1>
+    </div>
 
-      <div *ngFor="let education of educationData" class="div-item">
-          <img class="icon" [src]="education.icon">
-          <p class="education-title">{{ education.title }}</p>
-          <p class="education-date">{{ education.date }}</p>
-      </div>
+    <div *ngFor="let education of educationData" class="div-item">
+      <img class="icon" [src]="education.icon" (error)="imgError($event)">
+      <p class="education-title">{{ education.title }}</p>
+      <p class="education-date">{{ education.date }}</p>
+    </div>
 
   </div>
 

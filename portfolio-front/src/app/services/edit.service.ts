@@ -30,6 +30,8 @@ export class EditService {
 
   constructor() { }
 
+////////////// EDIT BUTTON TOGGLE /////////////////
+
   authEditCheck(){
     let token = sessionStorage.getItem('jwt');
     if(token !== null && token !== '' && token !== 'null'){
@@ -38,6 +40,8 @@ export class EditService {
       this.authEditObs.next(false);
     }
   }
+
+////////////// COMPONENT EDIT TOGGLES ////////////////
 
   toggleHeaderEdit(){
     this.headerEdit = !this.headerEdit;

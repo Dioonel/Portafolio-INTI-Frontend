@@ -16,7 +16,7 @@
     <div *ngFor="let skill of skillsData" class="div-item">
       <div class="div-skill-edit">
         <button class="del-btn" (click)="popSkill(skill?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-        <input type="text" class="input-edit input-hover" [value]="skill.skill" [(ngModel)]="skill.skill"> <br/>
+        <input type="text" class="input-edit input-hover" [value]="skill.skill" [(ngModel)]="skill.skill" placeholder="Skill..."> <br/>
         <label>Value:
           <input type="number" class="input-edit input-hover" style="width: 55px" [placeholder]="skill.value" (change)="changeProgress($event, skill)">
         </label>

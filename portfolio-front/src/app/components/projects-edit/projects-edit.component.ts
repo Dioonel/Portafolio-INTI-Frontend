@@ -11,16 +11,16 @@ import { NgModel } from '@angular/forms';
   styleUrls: ['./projects-edit.component.css']
 })
 export class ProjectsEditComponent implements OnInit {
+  projectsData!: ProjectsData[];
+  projectsDataCopy!: ProjectsData[];
+  addedProjects: ProjectsData[] = [];
+  deletedProjects: ProjectsData[] = [];
   faCheck = faCheck;
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
-  projectsData!: ProjectsData[];
-  addedProjects: ProjectsData[] = [];
-  deletedProjects: ProjectsData[] = [];
-  projectsDataCopy!: ProjectsData[];
 
-  constructor(private dataService: DataService, private editService: EditService) { }
+  constructor(private dataService: DataService, private editService: EditService) { }   // Este componente aplica la misma logica explicada en los comentarios de skills-edit-component.ts
 
   ngOnInit(): void {
     this.dataService.getProjects().subscribe(data => {
@@ -75,7 +75,7 @@ export class ProjectsEditComponent implements OnInit {
   addProject(){
     let newProject: ProjectsData = {
       name: 'New project',
-      description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+      description: '',
       icon: './../../../assets/images/template-small-icon.jpg',
       link: ''
     }
@@ -87,7 +87,6 @@ export class ProjectsEditComponent implements OnInit {
       this.projectsData[index].id = data.id;
     });
   }
-
 
   popProject(id: number | undefined){
     let index = this.projectsData.findIndex(project => project.id == id);

@@ -10,9 +10,9 @@ import { EditService } from './../../services/edit.service';
   styleUrls: ['./skills.component.css']
 })
 export class SkillsComponent implements OnInit {
+  skillsData!: SkillsData[];
   editAuth!: boolean;
   faEdit = faEdit;
-  skillsData!: SkillsData[];
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
@@ -21,8 +21,7 @@ export class SkillsComponent implements OnInit {
       this.editAuth = status;
     });
 
-    this.dataService.getSkills()
-    .subscribe(data => {
+    this.dataService.getSkills().subscribe(data => {
       this.skillsData = data;
     });
   }

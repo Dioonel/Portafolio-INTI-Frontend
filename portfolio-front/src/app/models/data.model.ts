@@ -1,11 +1,3 @@
-export interface MyData {
-  "header-data":    HeaderData;
-  "about-data":     AboutData;
-  "skills-data":    SkillsData[];
-  "projects-data":  ProjectsData[];
-  "education-data": EducationData[];
-}
-
 export interface AboutData {
   spanish: string;
   english: string;
@@ -42,7 +34,3 @@ export interface SkillsData {
 
 export interface UpdateAboutData extends Partial<AboutData> { }
 
-export interface FileObjectDTO {
-  file: File | null;
-  type: string;
-}

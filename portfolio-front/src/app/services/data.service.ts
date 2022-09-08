@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { MyData, SkillsData, ProjectsData, EducationData } from './../models/data.model';
+import { HeaderData, AboutData, SkillsData, ProjectsData, EducationData } from './../models/data.model';
 import { map, Observable } from 'rxjs';
 
 @Injectable({
@@ -11,10 +11,11 @@ export class DataService {
 
 
   constructor(private http: HttpClient) { }
-
+/////////////////////////////// LOGIN ///////////////////////////////////////
   login(username: string, password: string) {
     let body = {username, password};
-    return this.http.post<any>(`${this.url}/auth/authenticate`, body).pipe(map(data => {
+    return this.http.post<any>(`${this.url}/auth/authenticate`, body)
+    .pipe(map(data => {
       if(data?.jwt) {
         return data.jwt;
       } else {
@@ -24,19 +25,19 @@ export class DataService {
   }
 /////////////////////////////// HEADER ///////////////////////////////////////
   getHeader() {
-    return this.http.get<MyData['header-data']>(`${this.url}/header`);
+    return this.http.get<HeaderData>(`${this.url}/header`);
   }
 
-  updateHeader(header: MyData['header-data']){
-    return this.http.put<MyData['header-data']>(`${this.url}/header`, header);
+  updateHeader(header: HeaderData){
+    return this.http.put<HeaderData>(`${this.url}/header`, header);
   }
 /////////////////////////////// ABOUT ///////////////////////////////////////
   getAbout() {
-    return this.http.get<MyData['about-data']>(`${this.url}/about`);
+    return this.http.get<AboutData>(`${this.url}/about`);
   }
 
-  updateAbout(about: MyData['about-data']) {
-    return this.http.put<MyData['about-data']>(`${this.url}/about`, about);
+  updateAbout(about: AboutData) {
+    return this.http.put<AboutData>(`${this.url}/about`, about);
   }
 /////////////////////////////// SKILLS ///////////////////////////////////////
   getSkills() {
