@@ -11,6 +11,7 @@ export class LoginComponent implements OnInit {
 
   username: string = '';
   password: string = '';
+  error = false;
 
   constructor(private dataService: DataService) { }
 
@@ -24,7 +25,16 @@ export class LoginComponent implements OnInit {
       if(data !== null){
         sessionStorage.setItem('jwt', data);
         location.href = '';
+      } else {
+        this.loginError();
       }
+    },
+    error => {
+      this.loginError();
     });
+  }
+
+  loginError(){
+    this.error = true;
   }
 }

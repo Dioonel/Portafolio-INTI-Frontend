@@ -17,6 +17,7 @@
       </div>
       <br/><br/>
       <button type="submit" class="btn btn-success" [disabled]="myForm.invalid">Done</button>
+      <div><span [class.active]="error">Bad credentials</span></div>
     </form>
   </div>
 </div>
