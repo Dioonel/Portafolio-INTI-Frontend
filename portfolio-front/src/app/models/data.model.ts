@@ -41,3 +41,8 @@ export interface SkillsData {
 }
 
 export interface UpdateAboutData extends Partial<AboutData> { }
+
+export interface FileObjectDTO {
+  file: File | null;
+  type: string;
+}

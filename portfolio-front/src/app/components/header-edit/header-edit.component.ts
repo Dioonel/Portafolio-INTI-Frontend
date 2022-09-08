@@ -14,6 +14,8 @@ export class HeaderEditComponent implements OnInit {
   faCheck = faCheck;
   faXmark = faXmark;
   headerData!: HeaderData;
+  bannerHover = false;
+  ppHover = false;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 

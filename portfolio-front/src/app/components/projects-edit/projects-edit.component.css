@@ -30,7 +30,7 @@ textarea.input-edit{
 
 @media screen and (max-width: 800px) {
   .input-title-edit, .input-url-edit{
-    width: 200px;
+    width: 30%;
   }
   textarea.input-edit{
     width: 60%;

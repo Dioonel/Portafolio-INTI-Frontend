@@ -17,6 +17,7 @@
       <img class="icon icon-edit" [src]="education.icon">
       <input type="text" class="input-title-edit input-hover" required [value]="education.title" [(ngModel)]="education.title" placeholder="Title...">
       <input type="date" class="input-edit input-hover" required [value]="education.date" [(ngModel)]="education.date" placeholder="Date...">
+      <input type="text" class="input-edit input-hover" [value]="education.icon" [(ngModel)]="education.icon" placeholder="Image URL (optional)" style="margin-left: 5px; width: 30%;">
       <button class="del-btn" (click)="popEducation(education?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
     </div>
 
