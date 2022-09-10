@@ -7,7 +7,7 @@ import { map, Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class DataService {
-  url = 'http://localhost:8081/api';
+  url = 'https://inti-dio-portfolio.herokuapp.com/api';
 
 
   constructor(private http: HttpClient) { }

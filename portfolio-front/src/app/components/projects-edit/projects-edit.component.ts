@@ -4,6 +4,7 @@ import { DataService } from './../../services/data.service';
 import { ProjectsData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
 import { NgModel } from '@angular/forms';
+import { forkJoin } from 'rxjs';
 
 @Component({
   selector: 'app-projects-edit',
@@ -31,45 +32,28 @@ export class ProjectsEditComponent implements OnInit {
 
   cancelEdit(){
     if(this.addedProjects.length > 0){
-      for(let project of this.addedProjects){
-        this.dataService.deleteProject(project.id).subscribe(data => {});
-      }
-    }
-
-    setTimeout(() => {
-      this.addedProjects = [];
-      this.deletedProjects = [];
+      forkJoin(
+        this.addedProjects.map(project => this.dataService.deleteProject(project.id)))
+        .subscribe(data => {
+        this.addedProjects = [];
+        this.deletedProjects = [];
+        this.editService.toggleProjectsEdit();
+      });
+    } else {
       this.editService.toggleProjectsEdit();
-    }, 350);
+    }
   }
 
   saveEdit(){
-
     if(this.deletedProjects.length > 0){
-      for(let delProject of this.deletedProjects){
-        this.dataService.deleteProject(delProject.id).subscribe(data => {});
-      }
+      forkJoin(
+        this.deletedProjects.map(project => this.dataService.deleteProject(project.id)))
+        .subscribe(data => {
+          this.saveData();
+        });
+    } else {
+      this.saveData();
     }
-
-
-    if(this.projectsData.length > 0){
-      for(let project of this.projectsData){
-        let index = this.projectsData.findIndex(p => p.id == project.id);
-        if(index != -1){
-          if(this.projectsDataCopy[index]?.name != project.name || this.projectsDataCopy[index]?.description != project.description || this.projectsDataCopy[index]?.icon != project.icon || this.projectsDataCopy[index]?.link != project.link){
-            this.dataService.updateProject(project).subscribe(data => {});
-          } else {
-            continue;
-          }
-        }
-      }
-    }
-
-    setTimeout(() => {
-      this.addedProjects = [];
-      this.deletedProjects = [];
-      this.editService.toggleProjectsEdit();
-    }, 350);
   }
 
   addProject(){
@@ -93,6 +77,27 @@ export class ProjectsEditComponent implements OnInit {
     if(index != -1){
       this.deletedProjects.push(this.projectsData[index]);
       this.projectsData.splice(index, 1);
+    }
+  }
+
+  saveData(){
+    if(this.projectsData.length > 0){
+      forkJoin(
+        [this.projectsData.map(project => {
+          let index = this.projectsData.findIndex(p => p.id == project.id);
+            if(this.projectsDataCopy[index]?.name != project.name || this.projectsDataCopy[index]?.description != project.description || this.projectsDataCopy[index]?.icon != project.icon || this.projectsDataCopy[index]?.link != project.link){
+              return this.dataService.updateProject(project).subscribe(data => {});
+            } else {
+              return;
+            }
+          }
+        )
+      ])
+      .subscribe(data => {
+        this.dataService.getProjects().subscribe(data => this.editService.toggleProjectsEdit());
+      });
+    } else {
+      this.editService.toggleProjectsEdit();
     }
   }
 }

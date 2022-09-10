@@ -1,32 +1,35 @@
-<app-contact (contactChange)="updateBg()"></app-contact>
-<div [class.blur]="blurBg">
-  <app-nav (contactChange)="updateBg()"></app-nav>
-  <div class="container">
+<h2 [class.loading-msg-hidden]="!loading" [class.loading-msg]="loading"> Loading... </h2>
+<div [class.loading-div]="loading">
+  <app-contact (contactChange)="updateBg()"></app-contact>
+  <div [class.blur]="blurBg">
+    <app-nav (contactChange)="updateBg()"></app-nav>
+    <div class="container">
 
-    <app-header *ngIf="headerEdit === false; else headerElse"></app-header>
-    <ng-template #headerElse>
-      <app-header-edit></app-header-edit>
-    </ng-template>
+      <app-header *ngIf="headerEdit === false; else headerElse"></app-header>
+      <ng-template #headerElse>
+        <app-header-edit></app-header-edit>
+      </ng-template>
 
-    <app-about *ngIf="aboutEdit === false; else aboutElse"></app-about>
-    <ng-template #aboutElse>
-      <app-about-edit></app-about-edit>
-    </ng-template>
+      <app-about *ngIf="aboutEdit === false; else aboutElse"></app-about>
+      <ng-template #aboutElse>
+        <app-about-edit></app-about-edit>
+      </ng-template>
 
-    <app-skills *ngIf="skillsEdit === false; else skillsElse"></app-skills>
-    <ng-template #skillsElse>
-      <app-skills-edit></app-skills-edit>
-    </ng-template>
+      <app-skills *ngIf="skillsEdit === false; else skillsElse"></app-skills>
+      <ng-template #skillsElse>
+        <app-skills-edit></app-skills-edit>
+      </ng-template>
 
-    <app-projects *ngIf="projectsEdit === false; else projectsElse"></app-projects>
-    <ng-template #projectsElse>
-      <app-projects-edit></app-projects-edit>
-    </ng-template>
+      <app-projects *ngIf="projectsEdit === false; else projectsElse"></app-projects>
+      <ng-template #projectsElse>
+        <app-projects-edit></app-projects-edit>
+      </ng-template>
 
-    <app-education *ngIf="educationEdit === false; else educationElse"></app-education>
-    <ng-template #educationElse>
-      <app-education-edit></app-education-edit>
-    </ng-template>
+      <app-education *ngIf="educationEdit === false; else educationElse"></app-education>
+      <ng-template #educationElse>
+        <app-education-edit></app-education-edit>
+      </ng-template>
+    </div>
   </div>
 </div>
 

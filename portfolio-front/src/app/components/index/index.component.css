@@ -6,3 +6,16 @@
   transform: scale(1.1);
 }
 
+.loading-div{
+  display: none;
+}
+
+.loading-msg-hidden{
+  display: none;
+}
+
+.loading-msg{
+  display: grid;
+  place-items: center;
+  margin-top: 80px;
+}

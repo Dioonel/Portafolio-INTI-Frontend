@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { EditService } from './../../services/edit.service';
+import { DataService } from './../../services/data.service';
 
 @Component({
   selector: 'app-index',
@@ -13,8 +14,9 @@ export class IndexComponent implements OnInit {
   skillsEdit!: boolean;
   projectsEdit!: boolean;
   educationEdit!: boolean;
+  loading = true;
 
-  constructor(private editService: EditService) { }
+  constructor(private editService: EditService, private dataService: DataService) { }
 
   ngOnInit(): void {
     this.editService.authEditCheck();
@@ -32,7 +34,12 @@ export class IndexComponent implements OnInit {
     });
     this.editService.educationEdit$.subscribe(status => {
       this.educationEdit = status;
-    })
+    });
+    this.dataService.getAbout().subscribe(data => {
+      setTimeout(() => {
+        this.loading = false;
+      }, 750);
+    });
   }
 
   updateBg(){
