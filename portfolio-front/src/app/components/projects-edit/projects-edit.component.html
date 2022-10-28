@@ -4,6 +4,7 @@
     <button (click)="cancelEdit()" class="cancel-btn"><fa-icon [icon]="faXmark"></fa-icon></button>
     <button (click)="saveEdit()" class="save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
+  <span class="annotation" *ngIf="loading">Please wait... </span><app-small-loading class="loading-pos" *ngIf="loading"></app-small-loading>
   <div class="div-projects">
     <div class="div-title">
       <h1>Projects</h1>
@@ -14,12 +15,12 @@
     </div>
 
     <div *ngFor="let project of projectsData" class="div-project-item">
-      <img class="icon icon-edit" [src]="project.icon">
+      <img class="icon icon-edit" [src]="project.icon" (click)="selectIcon.click()">
+      <input type="file" accept="image/*" (change)="getImage($event, project?.id)" style="display: none" #selectIcon>
       <input type="text" class="input-title-edit input-hover" [value]="project.name" [(ngModel)]="project.name" placeholder="Title...">
       <input type="text" class="input-url-edit input-hover" [value]="project.link" [(ngModel)]="project.link" placeholder="URL (optional)" style="width: 30%; font-weight: 400;">
       <button class="del-btn" (click)="popProject(project?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
-<textarea autosize class="input-edit input-hover" [value]="project.description" [(ngModel)]="project.description" placeholder="Description..."></textarea>
-      <input type="text" class="input-edit input-hover" [value]="project.icon" [(ngModel)]="project.icon" placeholder="Image URL (optional)" style="margin-top: 8px; width: 30%;">
+<textarea autosize class="input-edit input-hover" [value]="project.description" [(ngModel)]="project.description" placeholder="Description..."></textarea> <br/>
     </div>
 
     <div class="div-title">

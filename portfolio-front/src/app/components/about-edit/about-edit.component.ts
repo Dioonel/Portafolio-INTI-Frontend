@@ -12,8 +12,11 @@ import { EditService } from './../../services/edit.service';
 })
 export class AboutEditComponent implements OnInit{
   aboutData!: AboutData;
+
   faCheck = faCheck;
   faXmark = faXmark;
+
+  loading = false;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
@@ -28,7 +31,9 @@ export class AboutEditComponent implements OnInit{
   }
 
   saveEdit(){
+    this.loading = true;
     this.dataService.updateAbout(this.aboutData).subscribe(data => {
+      this.loading = false;
       this.editService.toggleAboutEdit();
     });
   }

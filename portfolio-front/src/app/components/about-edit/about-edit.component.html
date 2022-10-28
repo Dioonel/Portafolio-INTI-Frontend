@@ -4,6 +4,7 @@
     <button (click)="cancelEdit()" class="cancel-btn"><fa-icon [icon]="faXmark"></fa-icon></button>
     <button (click)="saveEdit()" class="save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
+  <span class="annotation" *ngIf="loading">Please wait... </span><app-small-loading class="loading-pos" *ngIf="loading"></app-small-loading>
   <div class="div-title">
     <h1>About me...</h1>
   </div>

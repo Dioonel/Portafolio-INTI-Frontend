@@ -1,0 +1,11 @@
+.errorDiv{
+  position: absolute;
+  margin: 23% 45%;
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 30px 30px;
+}
+
+.errorDiv h1{
+  color: red;
+}

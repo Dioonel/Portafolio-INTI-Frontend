@@ -28,6 +28,10 @@ export class EditService {
   private educationEditObs = new BehaviorSubject<boolean>(this.educationEdit);
   educationEdit$ = this.educationEditObs.asObservable();
 
+  private errorMsg: boolean = false;
+  private errorMsgObs = new BehaviorSubject<boolean>(this.errorMsg);
+  errorMsg$ = this.errorMsgObs.asObservable();
+
   constructor() { }
 
 ////////////// EDIT BUTTON TOGGLE /////////////////
@@ -66,5 +70,10 @@ export class EditService {
   toggleEducationEdit(){
     this.educationEdit = !this.educationEdit;
     this.educationEditObs.next(this.educationEdit);
+  }
+
+  toggleErrorMsg(){
+    this.errorMsg = !this.errorMsg;
+    this.errorMsgObs.next(this.errorMsg);
   }
 }

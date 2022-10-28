@@ -10,6 +10,13 @@ export class InterceptorService implements HttpInterceptor{
   constructor() { }
 
   intercept(req: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
+    if(req.headers.has('skip')){
+      req = req.clone({
+        headers: req.headers.delete('skip')
+      });
+      return next.handle(req);
+    }
+
     let token = sessionStorage.getItem('jwt');
     if(token !== null && token !== '' && token !== 'null'){
       let reqAuth = req.clone({

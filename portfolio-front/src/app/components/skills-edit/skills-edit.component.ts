@@ -16,10 +16,13 @@ export class SkillsEditComponent implements OnInit {
   skillsDataCopy!: SkillsData[];
   addedSkills: SkillsData[] = [];
   deletedSkills: SkillsData[] = [];
+
   faCheck = faCheck;
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
+
+  loading = false;
 
   constructor(private dataService: DataService, private editService: EditService) { }
 
@@ -45,6 +48,7 @@ export class SkillsEditComponent implements OnInit {
   }
 
   saveEdit(){
+    this.loading = true;
     if(this.deletedSkills.length > 0){
       forkJoin(
         this.deletedSkills.map(skill => this.dataService.deleteSkill(skill.id))) // Se eliminan las skills de la BBDD que fueron eliminadas en la vista del cliente
@@ -101,9 +105,13 @@ export class SkillsEditComponent implements OnInit {
         )
         ])
       .subscribe(data => {
-        this.dataService.getSkills().subscribe(data => this.editService.toggleSkillsEdit());
+        setTimeout(() => {
+          this.loading = false;
+          this.editService.toggleSkillsEdit();
+        }, 1000)
       });
     } else {
+      this.loading = false;
       this.editService.toggleSkillsEdit();
     }
   }

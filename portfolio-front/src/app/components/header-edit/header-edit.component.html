@@ -1,10 +1,12 @@
 <div class="div-box">
 
   <div class="div-banner">
-    <img class="banner" [src]="headerData.banner" (mouseenter)="bannerHover = true" (mouseleave)="bannerHover = false">
+    <img class="banner" [src]="headerData.banner" (mouseenter)="bannerHover = true" (mouseleave)="bannerHover = false" (click)="selectBanner.click()">
+    <input type="file" accept="image/*" (change)="getImage($event, 'banner')" style="display: none" #selectBanner>
   </div>
   <div class="div-pp">
-    <img class="pp" [src]="headerData.pp" (mouseenter)="ppHover = true" (mouseleave)="ppHover = false">
+    <img class="pp" [src]="headerData.pp" (mouseenter)="ppHover = true" (mouseleave)="ppHover = false" (click)="selectPp.click()">
+    <input type="file" accept="image/*" (change)="getImage($event, 'pp')" style="display: none" #selectPp>
     <button (click)="cancelEdit()" class="header-cancel-btn"><fa-icon [icon]="faXmark"></fa-icon></button>
     <button (click)="saveEdit()" class="header-save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
@@ -14,10 +16,9 @@
     <input type="text" class="input-title-edit input-hover" [value]="headerData.name" [(ngModel)]="headerData.name" placeholder="Your name...">
     <div class="div-user-info">
       <input type="text" class="input-edit input-hover" style="display: inline;" placeholder="Position..." [value]="headerData.position" [(ngModel)]="headerData.position">
-      <input type="text" class="input-edit input-hover" [class.link-manual-hover]="bannerHover" style="display: inline; margin-left: 5px;" placeholder="New Banner Picture URL..." [(ngModel)]="headerData.banner">
       <br/>
       <input type="text" class="input-edit input-hover" style="display: inline;" placeholder="Country..." [value]="headerData.country" [(ngModel)]="headerData.country">
-      <input type="text" class="input-edit input-hover" [class.link-manual-hover]="ppHover" style="display: inline; margin-left: 5px;" placeholder="New Profile Picture URL..." [(ngModel)]="headerData.pp">
+      <span class="annotation" *ngIf="loading">Please wait... </span><app-small-loading class="loading-pos" *ngIf="loading"></app-small-loading>
     </div>
   </div>
 

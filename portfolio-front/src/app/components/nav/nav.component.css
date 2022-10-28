@@ -46,6 +46,22 @@
   background: #ccc;
 }
 
+@media screen and (max-width: 800px) {
+  img {
+      width: 200px;
+  }
+}
+
+@media screen and (max-width: 420px) {
+  img {
+      width: 160px;
+  }
+  .topnav a {
+    padding: 14px 12px;
+    font-size: 16px;
+  }
+}
+
 @media screen and (max-width: 300px) {
   .topnav .search-container {
       float: none;

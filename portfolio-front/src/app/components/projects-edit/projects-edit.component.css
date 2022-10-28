@@ -36,3 +36,20 @@ textarea.input-edit{
     width: 60%;
   }
 }
+
+.loading-pos{
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin-top: 8px;
+  margin-right: 80px;
+}
+
+.annotation{
+  position: absolute;
+  top: 0;
+  right: 0;
+  opacity: 0.6;
+  margin-top: 8px;
+  margin-right: 130px;
+}

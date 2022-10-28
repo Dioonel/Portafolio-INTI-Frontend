@@ -34,3 +34,8 @@ export interface SkillsData {
 
 export interface UpdateAboutData extends Partial<AboutData> { }
 
+export interface ImgurResponse {
+  data: any;
+  success: boolean;
+  status: number;
+}

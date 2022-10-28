@@ -23,6 +23,10 @@ import { ProjectsEditComponent } from './components/projects-edit/projects-edit.
 import { HeaderEditComponent } from './components/header-edit/header-edit.component';
 
 import { InterceptorService } from './services/interceptor.service';
+import { SmallLoadingComponent } from './components/small-loading/small-loading.component';
+import { ErrorComponent } from './components/error/error.component';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -41,6 +45,8 @@ import { InterceptorService } from './services/interceptor.service';
     EducationEditComponent,
     ProjectsEditComponent,
     HeaderEditComponent,
+    SmallLoadingComponent,
+    ErrorComponent,
   ],
   imports: [
     BrowserModule,
@@ -49,6 +55,12 @@ import { InterceptorService } from './services/interceptor.service';
     HttpClientModule,
     FormsModule,
     AutosizeModule,
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
+      // Register the ServiceWorker as soon as the application is stable
+      // or after 30 seconds (whichever comes first).
+      registrationStrategy: 'registerWhenStable:30000'
+    }),
   ],
   providers: [{
     provide: HTTP_INTERCEPTORS, useClass: InterceptorService, multi: true

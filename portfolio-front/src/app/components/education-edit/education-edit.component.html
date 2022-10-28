@@ -4,6 +4,7 @@
     <button (click)="cancelEdit()" class="cancel-btn"><fa-icon [icon]="faXmark"></fa-icon></button>
     <button (click)="saveEdit()" class="save-btn"><fa-icon [icon]="faCheck"></fa-icon></button>
   </div>
+  <span class="annotation" *ngIf="loading">Please wait... </span><app-small-loading class="loading-pos" *ngIf="loading"></app-small-loading>
   <div class="div-education">
     <div class="div-title">
       <h1>Education</h1>
@@ -14,10 +15,10 @@
     </div>
 
     <div *ngFor="let education of educationData" class="div-item">
-      <img class="icon icon-edit" [src]="education.icon">
+      <img class="icon icon-edit" [src]="education.icon" (click)="selectIcon.click()">
+      <input type="file" accept="image/*" (change)="getImage($event, education?.id)" style="display: none" #selectIcon>
       <input type="text" class="input-title-edit input-hover" [value]="education.title" [(ngModel)]="education.title" placeholder="Title...">
       <input type="date" class="input-edit input-hover" [value]="education.date" [(ngModel)]="education.date" placeholder="Date...">
-      <input type="text" class="input-edit input-hover" [value]="education.icon" [(ngModel)]="education.icon" placeholder="Image URL (optional)" style="margin-left: 5px; width: 30%;">
       <button class="del-btn" (click)="popEducation(education?.id)"><fa-icon [icon]="faMinus"></fa-icon></button>
     </div>
 

@@ -14,6 +14,7 @@ export class IndexComponent implements OnInit {
   skillsEdit!: boolean;
   projectsEdit!: boolean;
   educationEdit!: boolean;
+  errorMsg!: boolean;
   loading = true;
 
   constructor(private editService: EditService, private dataService: DataService) { }
@@ -34,6 +35,9 @@ export class IndexComponent implements OnInit {
     });
     this.editService.educationEdit$.subscribe(status => {
       this.educationEdit = status;
+    });
+    this.editService.errorMsg$.subscribe(status => {
+      this.errorMsg = status;
     });
     this.dataService.getAbout().subscribe(data => {
       setTimeout(() => {

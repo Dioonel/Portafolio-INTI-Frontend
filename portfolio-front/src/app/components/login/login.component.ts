@@ -19,9 +19,7 @@ export class LoginComponent implements OnInit {
   }
 
   submitForm(){
-    console.log(this.username, this.password);
-    this.dataService.login(this.username, this.password)
-    .subscribe(data => {
+    this.dataService.login(this.username, this.password).subscribe(data => {
       if(data !== null){
         sessionStorage.setItem('jwt', data);
         location.href = '';

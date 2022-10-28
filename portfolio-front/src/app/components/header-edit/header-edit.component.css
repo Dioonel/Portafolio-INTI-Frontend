@@ -40,10 +40,31 @@
 }
 
 .input-edit{
-  width: 250px;
+  width: 230px;
   margin-top: 10px;
   font-weight: 400;
   font-size: 15px;
   display: block;
 }
 
+.loading-pos{
+  position: absolute;
+  top: 1;
+  right: 0;
+  margin-right: 12px;
+}
+
+.annotation{
+  opacity: 0.6;
+  float: right;
+  margin-right: 65px;
+}
+
+@media screen and (max-width: 800px) {
+  .input-title-edit{
+    width: 55%;
+  }
+  .input-edit{
+    width: 40%;
+  }
+}

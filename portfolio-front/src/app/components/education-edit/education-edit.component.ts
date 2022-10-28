@@ -3,6 +3,7 @@ import { faCheck, faXmark, faPlus, faMinus } from '@fortawesome/free-solid-svg-i
 import { DataService } from './../../services/data.service';
 import { EducationData } from './../../models/data.model';
 import { EditService } from './../../services/edit.service';
+import { ImageService } from 'src/app/services/image.service';
 import { format, parseISO } from 'date-fns';
 import { forkJoin } from 'rxjs';
 
@@ -16,21 +17,42 @@ export class EducationEditComponent implements OnInit {
   educationDataCopy!: EducationData[];
   addedEducation: EducationData[] = [];
   deletedEducation: EducationData[] = [];
+
   faCheck = faCheck;
   faXmark = faXmark;
   faPlus = faPlus;
   faMinus = faMinus;
 
-  constructor(private dataService: DataService, private editService: EditService) { }        // Este componente aplica la misma logica explicada en los comentarios de skills-edit-component.ts
+  loading = false;
+  oldIcons: any = [];
+  newIcons: any = [];
+
+
+  constructor(private dataService: DataService, private editService: EditService, private imageService: ImageService) { }        // Este componente aplica la misma logica explicada en los comentarios de skills-edit-component.ts
 
   ngOnInit(): void {
     this.dataService.getEducation().subscribe(data => {
       this.educationData = data;
       this.educationDataCopy = JSON.parse(JSON.stringify(this.educationData));
+      for(let edu of this.educationDataCopy){
+        this.oldIcons.push = {
+          id: edu.id,
+          icon: edu.icon
+        }
+      }
     });
   }
 
   cancelEdit(){
+    if(this.newIcons.length > 0){
+      for(let icon of this.newIcons){
+        let index = this.educationData.findIndex(edu => edu.id == icon.id);
+        if(index != -1){
+          this.educationData[index].icon = icon.icon;
+        }
+      }
+    }
+
     if(this.addedEducation.length > 0){
       forkJoin(
         this.addedEducation.map(education => this.dataService.deleteEducation(education.id)))
@@ -45,6 +67,7 @@ export class EducationEditComponent implements OnInit {
   }
 
   saveEdit(){
+    this.loading = true;
     if(this.deletedEducation.length > 0){
       forkJoin(
         this.deletedEducation.map(education => this.dataService.deleteEducation(education.id)))
@@ -93,9 +116,42 @@ export class EducationEditComponent implements OnInit {
         )
       ])
       .subscribe(data => {
-        this.dataService.getEducation().subscribe(data => this.editService.toggleEducationEdit());
+        setTimeout(() => {
+          this.loading = false;
+          this.editService.toggleEducationEdit();
+        }, 1000)
       });
     } else {
+      this.loading = false;
+      this.editService.toggleEducationEdit();
+    }
+  }
+
+  async getImage(event: Event, id: EducationData['id']){
+    try{
+      let input = event.target as HTMLInputElement;
+      if(input.files && input.files.length > 0){
+        if(id != undefined){
+          this.loading = true;
+          let icon: File = input.files[0];
+
+          let obj = {
+            id: id,
+            icon: await this.imageService.uploadImage(icon)
+          };
+
+          this.newIcons.push(obj);
+
+          let index = this.educationData.findIndex(education => education.id == id);
+          if(index != -1){
+            this.educationData[index].icon = obj.icon;
+          }
+
+          this.loading = false;
+        }
+      }
+    } catch (err) {
+      this.editService.toggleErrorMsg();
       this.editService.toggleEducationEdit();
     }
   }
